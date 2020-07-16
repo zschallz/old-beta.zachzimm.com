@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'fontsource-roboto';
+import Header from './Header';
+import Button from '@material-ui/core/Button';
 import './App.css';
+
+const siteTitle = 'Zach\'s Technical Notes';
+
+const navigationSections = [
+  { title: 'Home', url: '#' },
+  { title: 'Projects', url: '#' },
+  { title: 'Blog', url: '#' },
+  { title: 'Contact', url: '#' },
+];
+
+const projectSections = [
+  { title: 'Ambient Trust', url: '#' },
+  { title: 'Net Trust', url: '#' },
+  { title: 'Dewey', url: '#' },
+  { title: 'Fluency', url: '#' },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header title={siteTitle} mainSections={navigationSections} subSections={projectSections} />
+      <Button variant="contained" color="primary">
+      Hello World
+      </Button>
     </div>
   );
 }
