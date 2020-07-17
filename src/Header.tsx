@@ -1,91 +1,76 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbarTitle: {
-    flex: 1,
-  },
-  toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
-  },
-  toolbarLink: {
-    padding: theme.spacing(1),
-    flexShrink: 0,
-  },
-}));
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 type SectionsProps = {
-  sections: Array<Section>,
+    sections: Array<Section>,
+    socialMedia:  Array<SocialMedia>, 
 }
 
-type HeaderProps = {
-  mainSections: Array<Section>, 
-  subSections:  Array<Section>, 
-  title:        String,
+type HeaderProps = { // ugh why does this exist
+    mainSections: Array<Section>, 
+    title:        string,
+    socialMedia:  Array<SocialMedia>, 
 }
 
 type Section = {
-  title: String,
-  url: String,
+    title: string,
+    url: string,
+    subSections: Array<Section>,
 }
 
-const NavBar = (props: SectionsProps) => {
-  const classes = useStyles();
+type SocialMedia = {
+    altText: string,
+    url: string,
+    imageUrl: string,
+}
+
+const NavItem = (props: Section) => {
+    if(props.subSections) {
+        return (
+            <NavDropdown title={props.title} id="collasible-nav-dropdown">
+                {props.subSections.map((section: Section) => (
+                    <NavDropdown.Item href={section.url}>{section.title}</NavDropdown.Item>
+                ))}
+            </NavDropdown>
+        )
+    } else {
+        return (
+            <Nav.Link href={props.url}>{props.title}</Nav.Link>
+        )
+    }
+}
+
+const TopNav = (props: SectionsProps) => {
 
   return (
-    <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-      {props.sections.map((section: any) => (
-        <Link
-          color="inherit"
-          noWrap
-          key={section.title}
-          variant="body2"
-          href={section.url}
-          className={classes.toolbarLink}
-        >
-          {section.title}
-        </Link>
-      ))}
-    </Toolbar>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar.Brand href="#home">ZZ</Navbar.Brand>
+    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+            {props.sections.map((section: Section) => (
+                <NavItem title={section.title} url={section.url} subSections={section.subSections}/>
+            ))}
+        </Nav>
+        <Nav>
+            {props.socialMedia.map((section: SocialMedia) => (
+                <Nav.Link href={section.url}>{section.altText}</Nav.Link>
+            ))}
+        </Nav>
+    </Navbar.Collapse>
+    </Navbar>
   )
 }
 
-// const navBar(props: any)
-
 export default function Header(props: HeaderProps) {
-  const classes = useStyles();
-  const { mainSections, subSections, title } = props;
+  const { mainSections, title, socialMedia } = props;
 
   return (
     <React.Fragment>
-      <Toolbar className={classes.toolbar}>
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-          {title}
-        </Typography>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
-      </Toolbar>
-      <NavBar sections={mainSections}/>
-      <NavBar sections={subSections}/>
+      <TopNav sections={mainSections} socialMedia={socialMedia}/>
     </React.Fragment>
   );
 }
@@ -93,4 +78,5 @@ export default function Header(props: HeaderProps) {
 Header.propTypes = {
   mainSections: PropTypes.array,
   title: PropTypes.string,
+  socialMedia: PropTypes.array,
 };

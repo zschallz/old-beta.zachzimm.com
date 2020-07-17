@@ -1,17 +1,8 @@
 import React from 'react';
-import 'fontsource-roboto';
-import Header from './Header';
-import Button from '@material-ui/core/Button';
 import './App.css';
+import Header from './Header';
 
-const siteTitle = 'Zach\'s Technical Notes';
-
-const navigationSections = [
-  { title: 'Home', url: '#' },
-  { title: 'Projects', url: '#' },
-  { title: 'Blog', url: '#' },
-  { title: 'Contact', url: '#' },
-];
+const siteTitle = 'Zachary Zimmerman';
 
 const projectSections = [
   { title: 'Ambient Trust', url: '#' },
@@ -20,14 +11,22 @@ const projectSections = [
   { title: 'Fluency', url: '#' },
 ];
 
+const navigationSections = [
+  { title: 'Home', url: '#' },
+  { title: 'Projects', url: '#', subSections: projectSections },
+  { title: 'Blog', url: '#' },
+  { title: 'Contact', url: '#' },
+];
+
+const socialMedia = [
+  { altText: 'GitHub', url: 'https://github.com/zschallz', imageUrl: 'github.jpg' },
+  { altText: 'LinkedIn', url: '#', imageUrl: '' },
+  { altText: 'Twitter', url: 'https://twitter.com/zschallz', imageUrl: '' },
+];
+
 function App() {
   return (
-    <div>
-      <Header title={siteTitle} mainSections={navigationSections} subSections={projectSections} />
-      <Button variant="contained" color="primary">
-      Hello World
-      </Button>
-    </div>
+    <Header mainSections={navigationSections} title={siteTitle} socialMedia={socialMedia}/>
   );
 }
 
