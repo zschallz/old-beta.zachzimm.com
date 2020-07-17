@@ -5,6 +5,11 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router
+} from "react-router-dom";
 
 const projectSections = [
   { title: 'Ambient Trust', url: './ambientTrust' },
@@ -29,14 +34,26 @@ const socialMedia = [
 function App() {
   return (
     <div>
-      <Header sections={navigationSections} socialMedia={socialMedia}/>
-      <Container fluid>
-        <Row>
-          <Col>
-            <Card body>Testy</Card>
-          </Col>
-        </Row>
-      </Container>
+      <Router>
+        <Header sections={navigationSections} socialMedia={socialMedia}/>
+        <Container fluid>
+          <Row>
+            <Col>
+              <Switch>
+                <Route path="/contact">
+                  <Card body>Contact Testy</Card>
+                </Route>
+                <Route path="/blog">
+                  <Card body>Blog Testy</Card>
+                </Route>
+                <Route path="/">
+                  <Card body>General Testy</Card>
+                </Route>
+              </Switch>
+            </Col>
+          </Row>
+        </Container>
+      </Router>
     </div>
   );
 }

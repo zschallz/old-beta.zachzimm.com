@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import { LinkContainer } from 'react-router-bootstrap'
+import {
+    BrowserRouter as Router
+  } from "react-router-dom";
 
 type HeaderProps = { // ugh why does this exist
     sections:     Array<Section>, 
@@ -26,13 +30,17 @@ const NavItem = (props: Section) => {
         return (
             <NavDropdown title={props.title} id="collasible-nav-dropdown">
                 {props.subSections.map((section: Section) => (
-                    <NavDropdown.Item href={section.url}>{section.title}</NavDropdown.Item>
+                    <LinkContainer to={section.url}>
+                        <NavDropdown.Item>{section.title}</NavDropdown.Item>
+                    </LinkContainer>
                 ))}
             </NavDropdown>
         )
     } else {
         return (
-            <Nav.Link href={props.url}>{props.title}</Nav.Link>
+            <LinkContainer to={props.url}>            
+                <Nav.Link>{props.title}</Nav.Link>
+            </LinkContainer>
         )
     }
 }
@@ -45,9 +53,11 @@ const TopNav = (props: HeaderProps) => {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-            {props.sections.map((section: Section) => (
-                <NavItem title={section.title} url={section.url} subSections={section.subSections}/>
-            ))}
+            <Router>
+                {props.sections.map((section: Section) => (
+                    <NavItem title={section.title} url={section.url} subSections={section.subSections}/>
+                ))}
+            </Router>
         </Nav>
         <Nav>
             {props.socialMedia.map((section: SocialMedia) => (
