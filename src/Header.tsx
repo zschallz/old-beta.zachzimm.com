@@ -4,27 +4,21 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
-type SectionsProps = {
-    sections: Array<Section>,
-    socialMedia:  Array<SocialMedia>, 
-}
-
 type HeaderProps = { // ugh why does this exist
-    mainSections: Array<Section>, 
-    title:        string,
+    sections:     Array<Section>, 
     socialMedia:  Array<SocialMedia>, 
 }
 
 type Section = {
-    title: string,
-    url: string,
-    subSections: Array<Section>,
+    title:        string,
+    url:          string,
+    subSections:  Array<Section>,
 }
 
 type SocialMedia = {
-    altText: string,
-    url: string,
-    imageUrl: string,
+    altText:      string,
+    url:          string,
+    imageUrl:     string,
 }
 
 const NavItem = (props: Section) => {
@@ -43,7 +37,7 @@ const NavItem = (props: Section) => {
     }
 }
 
-const TopNav = (props: SectionsProps) => {
+const TopNav = (props: HeaderProps) => {
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -66,17 +60,16 @@ const TopNav = (props: SectionsProps) => {
 }
 
 export default function Header(props: HeaderProps) {
-  const { mainSections, title, socialMedia } = props;
+  const { sections, socialMedia } = props;
 
   return (
     <React.Fragment>
-      <TopNav sections={mainSections} socialMedia={socialMedia}/>
+      <TopNav sections={sections} socialMedia={socialMedia}/>
     </React.Fragment>
   );
 }
 
 Header.propTypes = {
-  mainSections: PropTypes.array,
-  title: PropTypes.string,
+  sections: PropTypes.array,
   socialMedia: PropTypes.array,
 };

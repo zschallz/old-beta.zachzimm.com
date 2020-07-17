@@ -1,21 +1,23 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
-
-const siteTitle = 'Zachary Zimmerman';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 const projectSections = [
-  { title: 'Ambient Trust', url: '#' },
-  { title: 'Net Trust', url: '#' },
-  { title: 'Dewey', url: '#' },
-  { title: 'Fluency', url: '#' },
-];
+  { title: 'Ambient Trust', url: './ambientTrust' },
+  { title: 'Net Trust', url: './netTrust' },
+  { title: 'Dewey', url: './dewey' },
+  { title: 'Fluency', url: './fluency' },
+]; 
 
 const navigationSections = [
-  { title: 'Home', url: '#' },
+  { title: 'Home', url: './' },
   { title: 'Projects', url: '#', subSections: projectSections },
-  { title: 'Blog', url: '#' },
-  { title: 'Contact', url: '#' },
+  { title: 'Blog', url: './blog' },
+  { title: 'Contact', url: './contact' },
 ];
 
 const socialMedia = [
@@ -26,7 +28,16 @@ const socialMedia = [
 
 function App() {
   return (
-    <Header mainSections={navigationSections} title={siteTitle} socialMedia={socialMedia}/>
+    <div>
+      <Header sections={navigationSections} socialMedia={socialMedia}/>
+      <Container fluid>
+        <Row>
+          <Col>
+            <Card body>Testy</Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
