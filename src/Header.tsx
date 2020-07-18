@@ -53,11 +53,9 @@ const TopNav = (props: HeaderProps) => {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-            <Router>
                 {props.sections.map((section: Section) => (
                     <NavItem title={section.title} url={section.url} subSections={section.subSections}/>
                 ))}
-            </Router>
         </Nav>
         <Nav>
             {props.socialMedia.map((section: SocialMedia) => (
