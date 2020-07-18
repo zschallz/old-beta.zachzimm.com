@@ -4,9 +4,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap'
-import {
-    BrowserRouter as Router
-  } from "react-router-dom";
 
 type HeaderProps = { // ugh why does this exist
     sections:     Array<Section>, 
@@ -44,7 +41,7 @@ const NavItem = (props: Section) => {
         )
     }
 }
-
+// todo move down...
 const TopNav = (props: HeaderProps) => {
 
   return (

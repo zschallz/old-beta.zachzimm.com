@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
+import About from './About';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -19,7 +20,7 @@ const projectSections = [
 ]; 
 
 const navigationSections = [
-  { title: 'Home', url: './' },
+  { title: 'About me', url: './' },
   { title: 'Projects', url: '#', subSections: projectSections },
   { title: 'Blog', url: './blog' },
   { title: 'Contact', url: './contact' },
@@ -30,6 +31,12 @@ const socialMedia = [
   { altText: 'LinkedIn', url: '#', imageUrl: '' },
   { altText: 'Twitter', url: 'https://twitter.com/zschallz', imageUrl: '' },
 ];
+
+const aboutMe = {
+  title: "Engineering Manager",
+  employer: "The Economist",
+  location: "Birmingham, UK",
+}
 
 function App() {
   return (
@@ -47,7 +54,7 @@ function App() {
                   <Card body>Blog Testy</Card>
                 </Route>
                 <Route path="/">
-                  <Card body>General Testy</Card>
+                  <About {...aboutMe}/>
                 </Route>
               </Switch>
             </Col>
