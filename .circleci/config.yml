@@ -15,16 +15,16 @@ jobs:
       - checkout
       - run:
           name: Bootstrap
-            command: |
-            npm i
+          command: |
+          npm i
       - run:
           name: Run tests
-            command: |
-            npm run test
+          command: |
+          npm run test
       - run:
           name: Build
-            command: |
-            npm run build
+          command: |
+          npm run build
       - run:
           name: Send Via SFTP
           command: | 
