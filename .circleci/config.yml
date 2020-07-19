@@ -1,0 +1,31 @@
+version: 2.0
+jobs:
+  build:
+    machine:
+      image: circleci/classic:latest
+    branches:
+          only:
+            - master
+    steps:
+      - run:
+          name: Install LFTP
+          command: |
+            sudo apt-get update;
+            sudo apt-get install lftp;
+      - checkout
+      - run:
+          name: Bootstrap
+            command: |
+            npm i
+      - run:
+          name: Run tests
+            command: |
+            npm run test
+      - run:
+          name: Build
+            command: |
+            npm run build
+      - run:
+          name: Send Via SFTP
+          command: | 
+            lftp sftp://${USERNAME}:${PASSWORD}@${HOSTNAME} -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ./zachzimm.com/zachzimm.com/beta/; quit";
