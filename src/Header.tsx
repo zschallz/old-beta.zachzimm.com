@@ -27,7 +27,7 @@ const NavItem = (props: Section) => {
         return (
             <NavDropdown title={props.title} id="collasible-nav-dropdown">
                 {props.subSections.map((section: Section) => (
-                    <LinkContainer to={section.url}>
+                    <LinkContainer key={section.title} to={section.url}>
                         <NavDropdown.Item>{section.title}</NavDropdown.Item>
                     </LinkContainer>
                 ))}
@@ -51,12 +51,12 @@ const TopNav = (props: HeaderProps) => {
     <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
                 {props.sections.map((section: Section) => (
-                    <NavItem title={section.title} url={section.url} subSections={section.subSections}/>
+                    <NavItem key={section.title} title={section.title} url={section.url} subSections={section.subSections}/>
                 ))}
         </Nav>
         <Nav>
             {props.socialMedia.map((section: SocialMedia) => (
-                <Nav.Link href={section.url}>{section.altText}</Nav.Link>
+                <Nav.Link key={section.altText} href={section.url}>{section.altText}</Nav.Link>
             ))}
         </Nav>
     </Navbar.Collapse>
