@@ -21,7 +21,7 @@ const ambientTrustDetails: ProjectDetailsProps = {
 const ambientTrust: ProjectProps = {
     projectName:  'Ambient Trust',
     projectDetails: ambientTrustDetails, 
-//    body: string, // todo how to handle this?
+    body: "Booyah lotsa details",
 }
 
 export default function AmbientTrustProject() {

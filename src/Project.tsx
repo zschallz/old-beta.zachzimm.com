@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { ProjectDetailsProps } from './ProjectDetails'
 import ProjectDetails from './ProjectDetails'
 
@@ -15,7 +17,19 @@ export default function Project(props: ProjectProps) {
         <Card>
             <h1>{props.projectName}</h1>
             <hr/>
-            <ProjectDetails {...props.projectDetails}/>
+            <Row>
+                <Col>
+                    <ProjectDetails {...props.projectDetails}/>
+                </Col>
+                <Col>
+                    <p>Insert image here</p>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    {props.body}
+                 </Col>
+            </Row>
         </Card>
     );
   }
