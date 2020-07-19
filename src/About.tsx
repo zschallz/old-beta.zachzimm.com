@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -33,8 +32,3 @@ export default function About(props: AboutProps) {
         </Card>
     );
   }
-  
-  About.propTypes = {
-    sections: PropTypes.array,
-    socialMedia: PropTypes.array,
-  };
