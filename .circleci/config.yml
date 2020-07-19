@@ -26,6 +26,10 @@ jobs:
           command: |
             npm run build;
       - run:
+          name: Add build number
+          command: |
+            echo "Build number ${CIRCLE_BUILD_NUM} at $(date)" > ./build/version.txt
+      - run:
           name: Send Via SFTP
           command: | 
-            lftp sftp://${USERNAME}:${PASSWORD}@${HOSTNAME} -e "set sftp:auto-confirm yes; mirror -v -R --exclude .git/ --exclude .circleci/ ./build ./zachzimm.com/zachzimm.com/website/beta/; quit";
+            lftp sftp://${USERNAME}:${PASSWORD}@${HOSTNAME} -e "set sftp:auto-confirm yes; mirror -v -R --exclude .git/ --exclude .circleci/ ./build/ ./zachzimm.com/zachzimm.com/website/beta/; quit";
