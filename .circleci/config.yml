@@ -14,7 +14,7 @@ jobs:
             sudo apt-get install lftp;
       - checkout
       - run:
-          name: Bootstrap
+          name: Install Dependencies
           command: |
             npm i;
       - run:
@@ -28,4 +28,4 @@ jobs:
       - run:
           name: Send Via SFTP
           command: | 
-            lftp sftp://${USERNAME}:${PASSWORD}@${HOSTNAME} -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ./zachzimm.com/zachzimm.com/beta/; quit";
+            lftp sftp://${USERNAME}:${PASSWORD}@${HOSTNAME} -e "set sftp:auto-confirm yes; mirror -v -R --exclude .git/ --exclude .circleci/ ./ ./zachzimm.com/zachzimm.com/beta/; quit";
