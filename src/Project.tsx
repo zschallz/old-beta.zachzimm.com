@@ -1,10 +1,11 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import { ProjectDetailsProps } from './ProjectDetails'
+import ProjectDetails from './ProjectDetails'
 
 export type ProjectProps = {
     projectName:  string,
-    projectDetails?: ProjectDetailsProps, 
+    projectDetails: ProjectDetailsProps, 
     body?: string, // todo how to handle this?
 }
 
@@ -14,6 +15,7 @@ export default function Project(props: ProjectProps) {
         <Card>
             <h1>{props.projectName}</h1>
             <hr/>
+            <ProjectDetails {...props.projectDetails}/>
         </Card>
     );
   }
