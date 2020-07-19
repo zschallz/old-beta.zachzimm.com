@@ -2,9 +2,6 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import FormGroup from 'react-bootstrap/FormGroup'
-import FormLabel from 'react-bootstrap/FormLabel'
-import FormControl from 'react-bootstrap/FormControl'
 
 
 export default function Contact() {
@@ -25,9 +22,10 @@ export default function Contact() {
                 </Form.Group>
                 <Form.Group controlId="message">
                     <Form.Label>Your message</Form.Label>
-                    <Form.Control as="textarea" rows="8" />
+                    <Form.Control as="textarea" rows={8} />
                 </Form.Group>
-                </Form>
+                <Button variant="primary">Send</Button>
+            </Form>
         </Card>
     );
   }

@@ -49,13 +49,13 @@ function App() {
           <Row>
             <Col>
               <Switch>
-                <Route path="/contact">
+                <Route path="/beta/contact">
                   <Contact/>
                 </Route>
-                <Route path="/blog">
+                <Route path="/beta/blog">
                   <Card body>Blog Testy</Card>
                 </Route>
-                <Route path="/">
+                <Route path="/beta/">
                   <About {...aboutMe}/>
                 </Route>
               </Switch>
