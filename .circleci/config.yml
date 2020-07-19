@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   build:
     machine:
-      image: circleci/classic:latest
+      image: circleci/node:12-browsers
     branches:
           only:
             - master
@@ -17,11 +17,10 @@ jobs:
           name: Bootstrap
           command: |
             npm i;
-      # Something with this CircleCI setup and create-react-app isn't playing ball, so commenting out.
-      # - run:
-      #     name: Run tests
-      #     command: |
-      #       npm run test;
+      - run:
+          name: Run tests
+          command: |
+            npm run test;
       - run:
           name: Build
           command: |
