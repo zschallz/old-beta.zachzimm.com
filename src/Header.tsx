@@ -10,13 +10,13 @@ type HeaderProps = { // ugh why does this exist
     socialMedia:  Array<SocialMedia>, 
 }
 
-type Section = {
+export type Section = {
     title:        string,
     url:          string,
-    subSections:  Array<Section>,
+    subSections?: Array<Section>,
 }
 
-type SocialMedia = {
+export type SocialMedia = {
     altText:      string,
     url:          string,
     imageUrl:     string,

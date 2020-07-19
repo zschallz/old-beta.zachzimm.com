@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
+import {Section, SocialMedia} from './Header';
 import About from './About';
 import Contact from './Contact';
 import Container from 'react-bootstrap/Container'
@@ -13,21 +14,21 @@ import {
   BrowserRouter as Router
 } from "react-router-dom";
 
-const projectSections = [
+const projectSections: Section[] = [
   { title: 'Ambient Trust', url: './ambientTrust' },
   { title: 'Net Trust', url: './netTrust' },
   { title: 'Dewey', url: './dewey' },
   { title: 'Fluency', url: './fluency' },
 ]; 
 
-const navigationSections = [
+const navigationSections: Section[]  = [
   { title: 'About me', url: './' },
   { title: 'Projects', url: '#', subSections: projectSections },
   { title: 'Blog', url: './blog' },
   { title: 'Contact', url: './contact' },
 ];
 
-const socialMedia = [
+const socialMedia: SocialMedia[] = [
   { altText: 'GitHub', url: 'https://github.com/zschallz', imageUrl: 'github.jpg' },
   { altText: 'LinkedIn', url: '#', imageUrl: '' },
   { altText: 'Twitter', url: 'https://twitter.com/zschallz', imageUrl: '' },
