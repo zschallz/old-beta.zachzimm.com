@@ -33,7 +33,7 @@ export default function ProjectDetails(props: ProjectDetailsProps) {
                 </tr>
                 <tr>
                     <td>Technologies</td>
-                    <td>{props.technologies.toString()}</td>
+                    <td>{props.technologies.join(', ')}</td>
                 </tr>
                 <tr>
                     <td>Project Site</td>

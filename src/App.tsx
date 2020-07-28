@@ -14,6 +14,7 @@ import {
   BrowserRouter as Router
 } from "react-router-dom";
 import AmbientTrustProject from './AmbientTrustProject';
+import NetTrustProject from './NetTrustProject';
 
 const projectSections: Section[] = [
   { title: 'Ambient Trust', url: './ambientTrust' },
@@ -58,6 +59,9 @@ function App() {
                 </Route>
                 <Route path="/beta/ambientTrust">
                   <AmbientTrustProject/>
+                </Route>
+                <Route path="/beta/netTrust">
+                  <NetTrustProject/>
                 </Route>
                 <Route path="/beta/">
                   <About {...aboutMe}/>

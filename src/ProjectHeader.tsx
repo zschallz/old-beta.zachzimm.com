@@ -7,11 +7,10 @@ import ProjectDetails from './ProjectDetails'
 
 export type ProjectProps = {
     projectName:  string,
-    projectDetails: ProjectDetailsProps, 
-    body?: string, // todo how to handle this?
+    projectDetails: ProjectDetailsProps,
 }
 
-export default function Project(props: ProjectProps) {
+export default function ProjectHeader(props: ProjectProps) {
   
     return (
         <Card>
@@ -24,11 +23,6 @@ export default function Project(props: ProjectProps) {
                 <Col>
                     <p>Insert image here</p>
                 </Col>
-            </Row>
-            <Row>
-                <Col>
-                    {props.body}
-                 </Col>
             </Row>
         </Card>
     );
