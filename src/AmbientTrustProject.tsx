@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectHeader from './ProjectHeader';
 import Row from 'react-bootstrap/Row'
+import Card from 'react-bootstrap/Card'
 import { ProjectProps } from './ProjectHeader';
 import { ProjectDetailsProps } from './ProjectDetails';
 
