@@ -1,9 +1,8 @@
 import React from 'react';
 import ProjectHeader from './ProjectHeader';
+import Row from 'react-bootstrap/Row'
 import { ProjectProps } from './ProjectHeader';
 import { ProjectDetailsProps } from './ProjectDetails';
-import Card from 'react-bootstrap/esm/Card';
-import Row from 'react-bootstrap/esm/Row';
 
 const ambientTrustDetails: ProjectDetailsProps = {
     dates: "May 2008 - May 2010",
