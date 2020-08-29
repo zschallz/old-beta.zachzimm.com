@@ -16,9 +16,12 @@ export type Link = {
 
 const generateLinks = (links: Link[]) => {
     return (
-        links.map((link: Link) => (
-            <li><a href={link.url}>{link.label}</a></li>
-        ))
+        links.length === 0 ? (
+                <p>None</p>
+            ) : 
+            links.map((link: Link) => (
+                <li><a href={link.url}>{link.label}</a></li>
+            ))
     )
 }
 
